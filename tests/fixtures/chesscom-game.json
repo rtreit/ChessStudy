@@ -1,0 +1,10 @@
+{
+  "url": "https://www.chess.com/game/live/123456",
+  "end_time": 1761955200,
+  "time_class": "rapid",
+  "rules": "chess",
+  "rated": true,
+  "eco": "https://www.chess.com/openings/French-Defense-Exchange-Variation",
+  "white": {"username": "StudyPlayer", "rating": 1520, "result": "checkmated"},
+  "black": {"username": "Opponent", "rating": 1551, "result": "win"}
+}

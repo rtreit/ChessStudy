@@ -1,0 +1,15 @@
+interface:
+  display_name: Design Without Slop
+  short_description: Clear design and plain English for sites and documents
+  default_prompt: Use $design-without-slop to create or revise this site, report,
+    specification, or technical write-up, then apply the relevant design, language,
+    and output review gates.
+  icon_small: assets/icon.svg
+  icon_large: assets/icon.svg
+policy:
+  products:
+  - chatgpt
+  - codex
+  - api
+  - atlas
+  allow_implicit_invocation: true

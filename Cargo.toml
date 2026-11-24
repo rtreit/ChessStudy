@@ -1,0 +1,18 @@
+[package]
+name = "chessstudy"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.93"
+description = "Terminal browser for Lichess studies and completed chess games"
+publish = false
+
+[dependencies]
+anyhow = "1"
+chrono = { version = "0.4", default-features = false, features = ["clock"] }
+crossterm = "0.29"
+dotenvy = "0.15"
+open = "5"
+ratatui = "0.30"
+reqwest = { version = "0.12", default-features = false, features = ["blocking", "json", "rustls-tls-native-roots"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"

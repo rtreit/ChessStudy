@@ -1,6 +1,6 @@
 # ChessStudy
 
-ChessStudy is a read-only terminal browser for your Lichess studies and your recent completed Chess.com and Lichess games. Select a record to see its details and open the original study or game in your browser.
+ChessStudy is a terminal browser for your Lichess studies and your recent completed Chess.com and Lichess games. Select a record to see its details, open the original, or import a game into a Lichess study.
 
 ChessStudy is an independent project and is not affiliated with Chess.com or Lichess.
 
@@ -20,7 +20,7 @@ Set these values in `.env`:
 | --- | --- |
 | `CHESSCOM_USERNAME` | Your Chess.com username for the public game archive. |
 | `LICHESS_USERNAME` | Your Lichess username for public studies and completed games. Optional when you use a token. |
-| `LICHESS_TOKEN` | Optional [personal Lichess token](https://lichess.org/account/oauth/token) with `study:read` for studies visible to the signed-in account. If you also set a username, it must match the token account. |
+| `LICHESS_TOKEN` | Optional [personal Lichess token](https://lichess.org/account/oauth/token) with `study:read` for studies visible to the signed-in account and `study:write` to create studies or import chapters. If you also set a username, it must match the token account. |
 
 Git ignores `.env`. Existing shell variables take precedence. Restart ChessStudy after changing the configuration.
 
@@ -28,14 +28,23 @@ Git ignores `.env`. Existing shell variables take precedence. Restart ChessStudy
 cargo run --locked
 ```
 
-Chess.com games open first. Both game views show up to 50 games, newest first. Chess.com games are ordered by completion time and Lichess games by start time. Studies are ordered by last update. Dates use UTC.
+Chess.com games open first. Press `n` to load up to 50 older games from the archive. `Page Down` at the last loaded game also fetches the next batch. Reloading returns to the 50 most recent games. Chess.com games are ordered by completion time.
+
+On the Lichess studies tab, press `n` to create a study. Enter a name and press Tab to choose private, unlisted, or public visibility; new studies start as private. Press Enter to create it.
+
+To add a game to a study, select it and press `a`. Choose a study with the arrow keys and press Enter to import. The default clean import removes PGN comments and glyphs; press `c` to retain available comments and glyphs. Clean imports retain game tags, moves, and variations. Chapter names include the game date when available. The token account must be able to add chapters to the selected study. You can request computer analysis in Lichess after importing. If an import times out or its result is uncertain, check the study before retrying to avoid a duplicate.
+
+The Lichess games view shows up to 50 games ordered by start time. Both game views label results from your account's perspective. Wins are green, losses are red, and draws are amber. Studies are ordered by last update. Select a study to see its numbered chapters in the detail pane. Dates use UTC.
 
 | Key | Action |
 | --- | --- |
 | `1`, `2`, `3` | Open Chess.com games, Lichess studies, or Lichess games |
 | `Tab` / `Shift+Tab` or `←` / `→` | Switch views |
 | `↑` / `↓`, `k` / `j`, `Page Up` / `Page Down`, `Home` / `End` | Move through rows or scroll details |
+| `n` | Load older Chess.com games, or create a study from the Lichess studies tab |
+| `a` | Add the selected game to a Lichess study |
 | `d` | Toggle the detail view in a narrow or short terminal |
+| `[` / `]` | Scroll study details in a wide terminal |
 | `Esc` | Return to the list from the detail view |
 | `Enter` | Open the selected record in your browser |
 | `r` | Reload the current view |

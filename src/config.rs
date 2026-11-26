@@ -2,6 +2,7 @@ use std::{env, io::ErrorKind};
 
 use anyhow::{Context, Result, ensure};
 
+#[derive(Clone)]
 pub struct Config {
     pub chesscom_username: Option<String>,
     pub lichess_username: Option<String>,
